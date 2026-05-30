@@ -1,0 +1,185 @@
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.burger-menu {
+    display: none;
+    width: 30px;
+    height: 21px;
+    position: relative;
+    cursor: pointer;
+}
+@media (max-width: 992px)  {            
+            /* Mostramos el botón de hamburguesa */
+            .burger-menu {
+                display: block !important;
+                width: 30px;
+                height: 21px;
+                position: relative;
+                cursor: pointer;
+                z-index: 100; /* Asegura que se dibuje por encima del menú lateral */
+            }
+
+            /* Dibujamos las 3 líneas usando el span y pseudo-elementos */
+            .burger-menu span,
+            .burger-menu::before,
+            .burger-menu::after {
+                content: '';
+                background-color: #fff;
+                position: absolute;
+                width: 100%;
+                height: 3px;
+                border-radius: 2px;
+                transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease, opacity 0.3s ease;
+            }
+
+            /* Separación física de las tres líneas verticales */
+            .burger-menu::before { top: 0; }      /* Línea superior (Pan) */
+            .burger-menu span   { top: 9px; }    /* Línea central (Carne) */
+            .burger-menu::after  { bottom: 0; }   /* Línea inferior (Pan) */
+
+
+            .navbar-collapse {
+                display: block !important;  /* ← agregar esto */
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background-color: #34495e;
+                padding-top: 100px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease; 
+            }
+
+            /* Cambiamos la distribución de los enlaces a formato vertical */
+            .navbar-collapse ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+
+            .navbar-collapse a {
+                font-size: 22px;
+            }
+
+            /* ========================================================
+               3. ESTADOS ACTIVOS (Controlados en CSS tras el click de JS)
+               ======================================================== */
+            
+            /* Hace que el menú regrese a la pantalla deslizándose */
+            .navbar-collapse.active {
+                transform: translateX(0);
+            }
+
+            /* Animación del botón: La línea superior rota 45 grados hacia abajo */
+            .burger-menu.active::before {
+                top: 9px;
+                transform: rotate(45deg);
+            }
+            
+            /* La línea del medio (el span) se desvanece por completo */
+            .burger-menu.active span {
+                opacity: 0;
+            }
+            
+            /* La línea inferior rota 45 grados en dirección opuesta hacia arriba */
+            .burger-menu.active::after {
+                bottom: 9px;
+                transform: rotate(-45deg);
+            }
+        }
+
+.slick-slider{
+    display: flex !important;
+    align-items: center !important;
+}
+
+.carousel__item img {
+    width: 100%;    /* que ocupe el ancho del slide */
+    height: 500px;
+    margin: 20px 0;
+    object-fit: cover;
+}
+.carousel__item img:hover{
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+}
+
+.carousel__item {
+    padding: 0 15px;  /* el espacio entre cards va acá */
+    margin-right: 0;  /* sacá el margin-right fijo */
+}
+.carousel .slick-slide {
+  transform: scale(0.9); 
+  transition: transform 0.3s ease;
+  opacity: 0.5; 
+}
+
+.carousel .slick-center {
+  transform: scale(1.1); 
+  opacity: 1; 
+}
+
+.slick-prev:before,
+.slick-next:before {
+    display: none;
+    position: absolute !important;
+}
+
+.slick-prev,
+.slick-next {
+    width: 100px;
+    height: 100px;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-size: 100px 100px; /* estaba 100px 0px */
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+}
+
+.slick-next {
+    background-image: url('flecha-derecha.png') !important;
+    right: 10px;
+}
+
+.slick-prev {
+    background-image: url('flecha-izquierda.png') !important;
+    left: 10px;
+}
+
+.slick-slider {
+    overflow: visible !important;
+}
+
+#juegos {
+    overflow: visible !important;
+}
+
+#juegos .container {
+    overflow: visible !important;
+}
+
+.carousel__item {
+    position: relative;
+    padding: 0 15px;
+    margin-right: 0;
+}
+
+.carousel__item .title {
+    position: absolute;
+    bottom: 250px;  /* ajustá a gusto */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    width: 95%;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 0;
+    margin: 0;
+    text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black;
+    z-index: -10;
+}
